@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Car Comparison AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div class="mesh-overlay"></div>
+
+  <main class="page-shell">
+    <section class="hero-panel glass-card">
+      <div class="hero-copy">
+        <p class="eyebrow">Groq x NHTSA vPIC x Flask</p>
+        <h1>Compare premium cars side by side with live specs and Dubai-focused AI advice.</h1>
+        <p class="hero-text">
+          Build your own versus board from year, make, model, and variant data. Then let Groq
+          turn the technical spec sheet into a clean recommendation for daily life in Dubai.
+        </p>
+      </div>
+
+      <div class="hero-status">
+        <span class="pill">Luxury Dark UI</span>
+        <span class="pill">Live vPIC Data</span>
+        <span id="engineBadge" class="pill muted-pill">Checking Groq</span>
+      </div>
+    </section>
+
+    <section class="versus-layout">
+      <article class="car-column glass-card" data-side="left">
+        <div class="column-header">
+          <div>
+            <p class="column-label">Vehicle A</p>
+            <h2 id="leftTitle">Select a car</h2>
+          </div>
+          <span id="leftSpecBadge" class="badge">Awaiting selection</span>
+        </div>
+
+        <div class="selector-grid">
+          <label>
+            <span>Year</span>
+            <select id="leftYear"></select>
+          </label>
+          <label>
+            <span>Make</span>
+            <select id="leftMake" disabled></select>
+          </label>
+          <label>
+            <span>Model</span>
+            <select id="leftModel" disabled></select>
+          </label>
+          <label>
+            <span>Variant</span>
+            <select id="leftVariant" disabled></select>
+          </label>
+        </div>
+
+        <div class="vehicle-visual">
+          <img id="leftImage" alt="Vehicle A preview">
+          <div class="image-sheen"></div>
+        </div>
+
+        <div id="leftMeta" class="vehicle-meta">Choose a year first, then build your spec profile.</div>
+        <div id="leftHighlights" class="highlight-grid">
+          <div class="empty-card">No specs yet.</div>
+        </div>
+      </article>
+
+      <section class="versus-center">
+        <div class="versus-badge">VS</div>
+        <button id="compareButton" class="compare-button" type="button" disabled>Compare with AI</button>
+        <p class="compare-hint">Both vehicles need a selected variant before AI analysis can run.</p>
+      </section>
+
+      <article class="car-column glass-card" data-side="right">
+        <div class="column-header">
+          <div>
+            <p class="column-label">Vehicle B</p>
+            <h2 id="rightTitle">Select a car</h2>
+          </div>
+          <span id="rightSpecBadge" class="badge">Awaiting selection</span>
+        </div>
+
+        <div class="selector-grid">
+          <label>
+            <span>Year</span>
+            <select id="rightYear"></select>
+          </label>
+          <label>
+            <span>Make</span>
+            <select id="rightMake" disabled></select>
+          </label>
+          <label>
+            <span>Model</span>
+            <select id="rightModel" disabled></select>
+          </label>
+          <label>
+            <span>Variant</span>
+            <select id="rightVariant" disabled></select>
+          </label>
+        </div>
+
+        <div class="vehicle-visual">
+          <img id="rightImage" alt="Vehicle B preview">
+          <div class="image-sheen"></div>
+        </div>
+
+        <div id="rightMeta" class="vehicle-meta">Choose a year first, then build your spec profile.</div>
+        <div id="rightHighlights" class="highlight-grid">
+          <div class="empty-card">No specs yet.</div>
+        </div>
+      </article>
+    </section>
+
+    <section class="comparison-board glass-card">
+      <div class="board-header">
+        <div>
+          <p class="eyebrow">Raw Spec Comparison</p>
+          <h2>Technical snapshot</h2>
+        </div>
+        <span id="boardStatus" class="badge">Select two cars to compare</span>
+      </div>
+
+      <div id="comparisonTable" class="comparison-table">
+        <div class="table-empty">Your side-by-side spec matrix will appear here.</div>
+      </div>
+    </section>
+  </main>
+
+  <section id="analysisOverlay" class="overlay hidden" aria-hidden="true">
+    <div class="overlay-backdrop"></div>
+    <article class="overlay-panel glass-card">
+      <div class="overlay-header">
+        <div>
+          <p class="eyebrow">AI Comparison</p>
+          <h2 id="overlayTitle">Dubai-ready recommendation</h2>
+        </div>
+        <div class="overlay-actions">
+          <span id="overlayMode" class="badge">Standby</span>
+          <button id="closeOverlay" class="close-button" type="button" aria-label="Close analysis">Close</button>
+        </div>
+      </div>
+
+      <div id="analysisContent" class="analysis-content">
+        Run a comparison to open the AI analysis overlay.
+      </div>
+    </article>
+  </section>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

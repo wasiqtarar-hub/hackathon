@@ -1,0 +1,5 @@
+.env
+debug.log
+rag_store.json
+__pycache__/
+*.pyc
