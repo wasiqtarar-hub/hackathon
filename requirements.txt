@@ -3,3 +3,4 @@ groq
 gunicorn
 python-dotenv
 requests
+streamlit
